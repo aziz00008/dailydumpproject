@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  daily-dump-front:
+    build: ./daily-dump-front
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./daily-dump-front/src:/app/src
+      - ./daily-dump-front/public:/app/public
+      - ./daily-dump-front/package.json:/app/package.json
+      - ./daily-dump-front/package-lock.json:/app/package-lock.json
+    command: npm start
+
+  dailydump-user-service:
+    build: ./dailydump-user-service
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dailydump-user-service/src:/app/src
+      - ./dailydump-user-service/target:/app/target
+    command: mvn spring-boot:run
+    depends_on:
+      - mongodb
+
+  dailydump-post-service:
+    build: ./dailydump-post-service
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./dailydump-post-service/src:/app/src
+      - ./dailydump-post-service/target:/app/target
+    command: mvn spring-boot:run
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:4.2
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
+

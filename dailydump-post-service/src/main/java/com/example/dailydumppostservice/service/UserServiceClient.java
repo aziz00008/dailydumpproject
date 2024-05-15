@@ -10,9 +10,9 @@ public class UserServiceClient {
     @Autowired
     private WebClient webClient;
 
-    public UserModel fetchUserById(String userId) {
+    public UserModel fetchUserById(String userId){
         return webClient.get()
-                .uri("http://localhost:8080/api/users/{userId}", userId)
+                .uri("http://service1-dailydump-user-service-1:8080/api/users/{userId}", userId)
                 .retrieve()
                 .bodyToMono(UserModel.class)
                 .block();  // Block to wait for the response synchronously (use with caution)

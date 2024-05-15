@@ -13,10 +13,10 @@ COPY pom.xml .
 COPY src ./src
 
 # Expose the port your Spring Boot app runs on
-EXPOSE 8080
+EXPOSE 8081
 
 # Package the application
 RUN mvn package
 
 # Default command
-CMD ["java", "-jar", "target/dailydump-user-service-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "target/dailydump-post-service-0.0.1-SNAPSHOT.jar"]
