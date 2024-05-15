@@ -1,0 +1,139 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+}
+
+.logo {
+    font-size: 24px;
+    color: #3b5998;
+    font-weight: bold;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.username {
+    font-size: 18px;
+    color: #333;
+}
+
+.post-form {
+    width: 100%;
+    max-width: 500px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+}
+
+input[type="text"], input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #3b5998;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3333cc;
+}
+
+.posts {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.post {
+    background-color: #fff;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+/* Targeting images specifically within the posts container */
+.posts .post img {
+    max-width: 300px; /* Set a maximum width for the images */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensures it takes up the whole line and respects max-width */
+    margin: 0 auto; /* Centers the image within the post */
+    border-radius: 8px; /* Optional: Adds rounded corners to the image */
+}
+.user-profile {
+    display: flex;
+    align-items: center;
+    position: relative; /* Needed to position the dropdown absolutely within the user profile */
+}
+.profile-pic {
+    width: 50px; /* Adjust if needed */
+    height: 50px; /* Adjust if needed */
+    background-color: #ccc;
+    border-radius: 50%;
+    background-size: cover; /* Ensure the image covers the area */
+    background-position: center; /* Center the image */
+    margin-right: 10px;
+}
+
+.dropdown-content {
+    display: none; /* Hide dropdown by default */
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0; /* Align the dropdown to the right of the user-profile */
+    top: 40px; /* Position below the username */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.user-profile:hover .dropdown-content {
+    display: block; /* Show the dropdown when hovering over the user profile */
+}
+
+

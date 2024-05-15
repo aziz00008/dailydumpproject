@@ -1,0 +1,86 @@
+.user-profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.user-profile-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-profile-logo {
+    font-size: 24px;
+    color: #3b5998;
+    font-weight: bold;
+}
+
+.user-profile-area {
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.user-profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.profile-picture-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.user-profile-pic {
+    width: 120px;
+    height: 120px;
+    background-color: #ccc;
+    border-radius: 50%;
+    background-size: cover;
+}
+
+.user-profile-username {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+}
+
+.user-profile-posts {
+    width: 100%;
+}
+
+.edit-profile-pic {
+    display: block;
+    color: #3b5998;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.edit-profile-pic:hover {
+    text-decoration: underline;
+}
+.user-posts .post img {
+    max-width: 100%; /* Limit image width to 100% of its container */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 300px; /* Limit the height of images */
+    display: block; /* Ensures it takes up the whole line and respects max-width */
+    margin: 10px ; /* Centers the image within the post */
+    border-radius: 4px; /* Adds rounded corners to the image */
+}
