@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0; /* Adjust the background color as needed */
+    background-color: #f0f0f0;
   }
   
   .login-form {
@@ -17,7 +17,7 @@
   }
   
   .login-form h2 {
-    color: #3b5998; /* This is the Facebook-like blue */
+    color: #3b5998; 
   }
   
   input[type="text"], input[type="password"] {
@@ -32,7 +32,7 @@
   button {
     width: 100%;
     padding: 10px;
-    background-color: #3b5998; /* Button color matches h2 */
+    background-color: #3b5998; 
     color: white;
     border: none;
     border-radius: 4px;
@@ -40,6 +40,6 @@
   }
   
   button:hover {
-    background-color: #3333cc; /* Darker blue on hover */
+    background-color: #3333cc; 
   }
   

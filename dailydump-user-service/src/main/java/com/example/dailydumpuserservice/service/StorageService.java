@@ -52,7 +52,7 @@ public class StorageService {
                 .build();
     }
 
-    /* Create a pre-signed URL to download an object in a subsequent GET request. */
+
     public String saveuserphoto(String username,String url){
         User founduser= repository.findByUsername(username);
         founduser.setImage(url);
@@ -83,7 +83,7 @@ System.out.println(url+" this is test");
 
             return url.toString();
         } catch (Exception e) {
-            // Handle specific exceptions as necessary
+
             throw new Exception("Error generating presigned URL", e);
         }
     }

@@ -77,10 +77,10 @@
     text-decoration: underline;
 }
 .user-posts .post img {
-    max-width: 100%; /* Limit image width to 100% of its container */
-    height: auto; /* Maintain aspect ratio */
-    max-height: 300px; /* Limit the height of images */
-    display: block; /* Ensures it takes up the whole line and respects max-width */
-    margin: 10px ; /* Centers the image within the post */
-    border-radius: 4px; /* Adds rounded corners to the image */
+    max-width: 100%; 
+    height: auto; 
+    max-height: 300px; 
+    display: block; 
+    margin: 10px ; 
+    border-radius: 4px; 
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import './Home.css';
 import { formatISO } from 'date-fns';
-import AuthContext from './AuthContext'; // Adjust the import path as necessary
+import AuthContext from './AuthContext'; 
 
 function Home() {
     const { username } = useContext(AuthContext);
@@ -12,11 +12,11 @@ function Home() {
     const [posts, setPosts] = useState([]);
     const [profilePicUrl, setProfilePicUrl] = useState('');
 
-    // Define fetchPosts outside useEffect 
+    
     console.log(username)
 
     useEffect( () => {
-        if (username) { // Ensure username is not empty
+        if (username) { 
             console.log("test entry")
              fetchProfileImage(username);
             
@@ -37,7 +37,7 @@ function Home() {
     useEffect(() => {
         fetchPosts();
         
-    }, []); // Dependency array is empty, so this runs only on mount
+    }, []); 
 
     const handleFileChange = (event) => {
         setFile(event.target.files[0]);
@@ -49,18 +49,18 @@ function Home() {
             const response = await axios.get('http://localhost:8080/api/users/getUser', {
                 params: { username: usern }
             }); 
-             setProfilePicUrl(response.data); // Set the image URL received from the server
+             setProfilePicUrl(response.data); 
              console.log(profilePicUrl+" testing profile url") 
             } catch (error) {
             console.error('Failed to fetch profile image:', error);
-            setProfilePicUrl(''); // Set a default or error image if needed
+            setProfilePicUrl('');
         }
     };
     const uploadFile = async (file) => {
-        // Get the presigned URL from your backend
+        
         const response = await axios.get('http://localhost:8081/api/storage/generate-presigned-url', {params: {
             bucketName: 'dailyduploads',
-            objectKey: file.name  // Now correctly accessing file.name
+            objectKey: file.name 
         }});
         const presignedUrl = response.data;
         console.log(response.data);
@@ -68,13 +68,13 @@ function Home() {
         console.log(file);
         console.log(file.type);
     
-        // Upload the file using the presigned URL
+        
         const result = await fetch(presignedUrl,{method: 'PUT',headers: {"Content-Type":file.type},body: file})
     
         if (result.ok) {
             console.log("Upload successful");
-            // Optionally return the URL or any other data needed for the post
-            return { url: presignedUrl };  // Assuming you might store this URL or similar
+           
+            return { url: presignedUrl };  
         } else {
             console.error("Upload failed");
             throw new Error('Upload failed');
@@ -82,9 +82,9 @@ function Home() {
     };
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const currentDate = formatISO(new Date());  // Ensure the date is formatted properly
+        const currentDate = formatISO(new Date());  
     
-        // Prepare post data excluding the file object
+        
         const postData = {
             userId: username,
            
@@ -93,16 +93,16 @@ function Home() {
             creationDate: currentDate
         };
     
-        // Make sure `file` is not null or undefined
+        
         if (file) {
             try {
-                // Call uploadFile passing the file object
+                
                 const uploadResponse = await uploadFile(file);
                 console.log(uploadResponse);
                 console.log(uploadResponse.url);
 
     
-                // Include additional data from the upload if necessary, e.g., a file URL
+                
                 postData.photo = "https://dailyduploads.s3.amazonaws.com/"+file.name;
                 console.log(postData.photo);
                 console.log(postData)
@@ -110,8 +110,8 @@ function Home() {
                 console.log(createPostResponse);
                 setMessage('Post successful!');
                 setContent('');
-                setFile(null);  // Clear the file after uploading
-                fetchPosts();  // Refresh posts after adding
+                setFile(null);  
+                fetchPosts();  
             } catch (error) {
                 setMessage('Failed to post content.');
                 console.error('Post error:', error);
@@ -122,8 +122,8 @@ function Home() {
                 console.log(createPostResponse);
                 setMessage('Post successful!');
                 setContent('');
-                setFile(null);  // Clear the file after uploading
-                fetchPosts();  // Refresh posts after adding
+                setFile(null);  
+                fetchPosts();  
         }
     };
     

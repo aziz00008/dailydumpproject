@@ -86,38 +86,38 @@ button:hover {
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-/* Targeting images specifically within the posts container */
+
 .posts .post img {
-    max-width: 300px; /* Set a maximum width for the images */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Ensures it takes up the whole line and respects max-width */
-    margin: 0 auto; /* Centers the image within the post */
-    border-radius: 8px; /* Optional: Adds rounded corners to the image */
+    max-width: 300px; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+    border-radius: 8px; 
 }
 .user-profile {
     display: flex;
     align-items: center;
-    position: relative; /* Needed to position the dropdown absolutely within the user profile */
+    position: relative; 
 }
 .profile-pic {
-    width: 50px; /* Adjust if needed */
-    height: 50px; /* Adjust if needed */
+    width: 50px; 
+    height: 50px; 
     background-color: #ccc;
     border-radius: 50%;
-    background-size: cover; /* Ensure the image covers the area */
-    background-position: center; /* Center the image */
+    background-size: cover; 
+    background-position: center; 
     margin-right: 10px;
 }
 
 .dropdown-content {
-    display: none; /* Hide dropdown by default */
+    display: none; 
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    right: 0; /* Align the dropdown to the right of the user-profile */
-    top: 40px; /* Position below the username */
+    right: 0; 
+    top: 40px; 
 }
 
 .dropdown-content a {
@@ -133,7 +133,6 @@ button:hover {
 }
 
 .user-profile:hover .dropdown-content {
-    display: block; /* Show the dropdown when hovering over the user profile */
-}
+    display: block; }
 
 

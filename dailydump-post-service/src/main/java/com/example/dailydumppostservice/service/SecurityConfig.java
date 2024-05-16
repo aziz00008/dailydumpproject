@@ -18,11 +18,11 @@ public class SecurityConfig {
         http
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
-                                // Allow registration without authentication
-                                .anyRequest().permitAll()  // Require authentication for all other requests
+
+                                .anyRequest().permitAll()
                 )
-                .csrf(csrf -> csrf.disable())  // Explicitly disable CSRF as per new configuration methods
-                .httpBasic(Customizer.withDefaults());  // Use HTTP Basic authentication
+                .csrf(csrf -> csrf.disable())
+                .httpBasic(Customizer.withDefaults());
         return http.build();
     }
 

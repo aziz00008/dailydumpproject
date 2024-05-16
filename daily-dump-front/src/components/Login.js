@@ -1,5 +1,5 @@
 import React, { useState,useContext } from 'react';
-import './Login.css';  // Assuming separate CSS for login, but you can reuse Register.css
+import './Login.css';  
 import axios from 'axios';
 import AuthContext from './AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -8,25 +8,25 @@ function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const history = useNavigate(); // For redirection
+  const history = useNavigate(); 
   const { setAuthToken , setUsername: setContextUsername} = useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      // Adjust the URL and port as per your server configuration
+    
       const response = await axios.post('http://localhost:8080/api/v1/auth/authenticate', { username, password });
       console.log('Authenticated:', response.data);
       setMessage('Login successful!');
       const { token} = response.data;
       localStorage.setItem('token', token);
-      localStorage.setItem('username',username); // Store the username
-      setAuthToken(token); // Update context with the token
+      localStorage.setItem('username',username); 
+      setAuthToken(token); 
       console.log(username);
-      setContextUsername( username); // Update username in context
+      setContextUsername( username); 
    
-      history('/') // Redirect to home page
-      // You might handle token storage or redirection here
+      history('/') 
+      
     } catch (error) {
       setMessage('Login failed. Please check your credentials.');
       console.error('Login error:', error);

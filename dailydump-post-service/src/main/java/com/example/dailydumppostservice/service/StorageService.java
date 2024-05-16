@@ -49,7 +49,7 @@ private StorageConfig client ;
                 .build();
     }
 
-    /* Create a pre-signed URL to download an object in a subsequent GET request. */
+
     public String generatePresignedUrl(String bucketName, String objectKey) throws Exception {
         try {java.util.Date expiration = new java.util.Date();
             long milliSeconds = expiration.getTime();
@@ -70,7 +70,7 @@ private StorageConfig client ;
 
             return url.toString();
         } catch (Exception e) {
-            // Handle specific exceptions as necessary
+
             throw new Exception("Error generating presigned URL", e);
         }
     }
