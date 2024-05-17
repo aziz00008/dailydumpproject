@@ -42,4 +42,7 @@ To run this application, you will need:
    ```bash
    docker-compose up -d
 
-   ![Screenshot 1](https://github.com/aziz00008/dailydumpproject/blob/74cce84eb12d74d30df03872954461bdb4a136fc/imgs/Screenshot%20from%202024-05-15%2021-09-31.png)
+
+
+
+   ![Screenshot 1](imgs/Screenshot from 2024-05-15 21-09-31.png)
