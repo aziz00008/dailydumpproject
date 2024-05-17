@@ -45,4 +45,4 @@ To run this application, you will need:
 
 
 
-   ![Screenshot 1](imgs/Screenshot from 2024-05-15 21-09-31.png)
+   ![alt text]([imgs/Screenshot from 2024-05-15 21-09-31.png](https://raw.githubusercontent.com/aziz00008/dailydumpproject/bb8cc8e4f20765b5111d8d4f9766281f10584d1b/imgs/Screenshot%20from%202024-05-15%2021-09-31.png))
