@@ -41,3 +41,5 @@ To run this application, you will need:
    Once i activate the keys , navigate to the root directory of the project and run the following command:
    ```bash
    docker-compose up -d
+
+   ![Screenshot 1]([[imgs/Screenshot from 2024-05-15 21-09-31.png]](https://github.com/aziz00008/dailydumpproject/blob/74cce84eb12d74d30df03872954461bdb4a136fc/imgs/Screenshot%20from%202024-05-15%2021-09-31.png))
