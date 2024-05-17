@@ -5,30 +5,32 @@ import { formatISO } from 'date-fns';
 import AuthContext from './AuthContext'; 
 
 function Home() {
-    const { username } = useContext(AuthContext);
+    const { username, logout } = useContext(AuthContext);
     const [content, setContent] = useState('');
     const [file, setFile] = useState(null);
     const [message, setMessage] = useState('');
     const [posts, setPosts] = useState([]);
     const [profilePicUrl, setProfilePicUrl] = useState('');
 
-    
-    console.log(username)
+    console.log(username);
 
-    useEffect( () => {
+    useEffect(() => {
         if (username) { 
-            console.log("test entry")
-             fetchProfileImage(username);
-            
+            console.log("test entry");
+            fetchProfileImage(username);
         }
     }, [username]);
+
     useEffect(() => {
-        console.log(profilePicUrl + " testing profile url after update"); // Debugging state after update
+        console.log(profilePicUrl + " testing profile url after update");
     }, [profilePicUrl]);
+    
     const fetchPosts = async () => {
         try {
             const response = await axios.get('http://localhost:8081/api/posts/all');
-            setPosts(response.data);
+            const sortedPosts = response.data.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate)); // Sort posts by creation date in descending order
+            console.log(sortedPosts); 
+            setPosts(sortedPosts.reverse()); 
         } catch (error) {
             console.error('Failed to fetch posts', error);
         }
@@ -36,12 +38,10 @@ function Home() {
 
     useEffect(() => {
         fetchPosts();
-        
     }, []); 
 
     const handleFileChange = (event) => {
         setFile(event.target.files[0]);
-        
     };
 
     const fetchProfileImage = async (usern) => {
@@ -49,16 +49,16 @@ function Home() {
             const response = await axios.get('http://localhost:8080/api/users/getUser', {
                 params: { username: usern }
             }); 
-             setProfilePicUrl(response.data); 
-             console.log(profilePicUrl+" testing profile url") 
-            } catch (error) {
+            setProfilePicUrl(response.data); 
+            console.log(profilePicUrl + " testing profile url");
+        } catch (error) {
             console.error('Failed to fetch profile image:', error);
             setProfilePicUrl('');
         }
     };
+
     const uploadFile = async (file) => {
-        
-        const response = await axios.get('http://localhost:8081/api/storage/generate-presigned-url', {params: {
+        const response = await axios.get('http://localhost:8081/api/storage/generate-presigned-url', { params: {
             bucketName: 'dailyduploads',
             objectKey: file.name 
         }});
@@ -68,44 +68,37 @@ function Home() {
         console.log(file);
         console.log(file.type);
     
-        
-        const result = await fetch(presignedUrl,{method: 'PUT',headers: {"Content-Type":file.type},body: file})
+        const result = await fetch(presignedUrl, { method: 'PUT', headers: { "Content-Type": file.type }, body: file });
     
         if (result.ok) {
             console.log("Upload successful");
-           
             return { url: presignedUrl };  
         } else {
             console.error("Upload failed");
             throw new Error('Upload failed');
         }
     };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const currentDate = formatISO(new Date());  
     
-        
         const postData = {
             userId: username,
-           
             text: content,
-            photo:'',
+            photo: '',
             creationDate: currentDate
         };
     
-        
         if (file) {
             try {
-                
                 const uploadResponse = await uploadFile(file);
                 console.log(uploadResponse);
                 console.log(uploadResponse.url);
-
     
-                
-                postData.photo = "https://dailyduploads.s3.amazonaws.com/"+file.name;
+                postData.photo = "https://dailyduploads.s3.amazonaws.com/" + file.name;
                 console.log(postData.photo);
-                console.log(postData)
+                console.log(postData);
                 const createPostResponse = await axios.post('http://localhost:8081/api/posts/create', postData);
                 console.log(createPostResponse);
                 setMessage('Post successful!');
@@ -119,28 +112,27 @@ function Home() {
         } else {
             setMessage('No file selected.');
             const createPostResponse = await axios.post('http://localhost:8081/api/posts/create', postData);
-                console.log(createPostResponse);
-                setMessage('Post successful!');
-                setContent('');
-                setFile(null);  
-                fetchPosts();  
+            console.log(createPostResponse);
+            setMessage('Post successful!');
+            setContent('');
+            setFile(null);  
+            fetchPosts();  
         }
     };
-    
 
     return (
         <div className="home-container">
             <header>
                 <div className="logo">DailyDump</div>
                 <div className="user-profile">
-    <div className="profile-pic" style={{ backgroundImage: `url(${profilePicUrl})` }}></div>
-    <div className="username">{username}</div>
-    <div className="dropdown-content">
-        <a href="/profile">Profile</a>
-        <a href="/settings">Settings</a>
-        <a href="/logout">Logout</a>
-    </div>
-</div>
+                    <div className="profile-pic" style={{ backgroundImage: `url(${profilePicUrl})` }}></div>
+                    <div className="username">{username}</div>
+                    <div className="dropdown-content">
+                        <a href="/profile">Profile</a>
+                        <a href="/settings">Settings</a>
+                        <a href="#" onClick={logout}>Logout</a> 
+                    </div>
+                </div>
             </header>
             <form onSubmit={handleSubmit} className="post-form">
                 <input type="text" value={content} onChange={e => setContent(e.target.value)} placeholder="What's on your mind?" />
@@ -152,8 +144,10 @@ function Home() {
                 {posts.length ? posts.map((post, index) => (
                     <div key={index} className="post">
                         <div className="post-header">
-                            <div className="profile-pic" style={{ backgroundImage: `url(${post.user.profilePictureUrl})` }}></div> 
-                            <div className="username">{post.user.username}</div>
+                            <div className="post-profile">
+                                <div className="profile-pic" style={{ backgroundImage: `url(${post.user.profilePictureUrl})` }}></div>
+                                <div className="username">{post.user.username}</div>
+                            </div>
                         </div>
                         <p>{post.content}</p>
                         {post.imageUrl && <img src={post.imageUrl} alt="Post" />}

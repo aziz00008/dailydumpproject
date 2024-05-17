@@ -1,8 +1,8 @@
 cloud:
   aws:
     credentials:
-      accessKey: AKIA253Y5KG6XY2CUGYH
-      secretKey: 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
+      accessKey: AKIA253Y5KG62RJGYHGR
+      secretKey: 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
     region:
       static: us-east-1
     s3:

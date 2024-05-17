@@ -12,6 +12,8 @@ public class UserServiceClient {
 
     public UserModel fetchUserById(String userId){
         return webClient.get()
+                //to change local host later http://service1-dailydump-user-service-1
+                //change to localhost if running on machine !
                 .uri("http://service1-dailydump-user-service-1:8080/api/users/{userId}", userId)
                 .retrieve()
                 .bodyToMono(UserModel.class)

@@ -79,7 +79,7 @@ public class StorageService {
             generatePresignedUrlRequest.setExpiration(expiration);
             URL url = s3Client.generatePresignedUrl(generatePresignedUrlRequest);
 
-System.out.println(url+" this is test");
+            System.out.println(url+" this is test");
 
             return url.toString();
         } catch (Exception e) {

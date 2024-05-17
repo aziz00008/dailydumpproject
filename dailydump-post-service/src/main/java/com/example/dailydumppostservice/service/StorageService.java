@@ -41,7 +41,7 @@ public class StorageService {
     @Value("${cloud.aws.region.static}")
     private String region;
     private final S3Presigner presigner;
-private StorageConfig client ;
+    private StorageConfig client ;
 
     public StorageService() {
         this.presigner = S3Presigner.builder()
