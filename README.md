@@ -39,10 +39,8 @@ To run this application, you will need:
    Please note that this application is for educational purpose only ! it is a bad practice to expose your aws keys !
 3. **Run Docker Compose:**
    Once i activate the keys , navigate to the root directory of the project and run the following command:
-   ```bash
+   
    docker-compose up -d
 
 
-
-
-   ![alt text]([imgs/Screenshot from 2024-05-15 21-09-31.png](https://raw.githubusercontent.com/aziz00008/dailydumpproject/bb8cc8e4f20765b5111d8d4f9766281f10584d1b/imgs/Screenshot%20from%202024-05-15%2021-09-31.png))
+  ![alt text]([imgs/Screenshot from 2024-05-15 21-09-31.png](https://raw.githubusercontent.com/aziz00008/dailydumpproject/bb8cc8e4f20765b5111d8d4f9766281f10584d1b/imgs/Screenshot%20from%202024-05-15%2021-09-31.png))
