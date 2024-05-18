@@ -4,11 +4,11 @@ This is a simple social media application created using a microservices architec
 
 ## Features
 
-- User authentication and authorization
-- Posting and sharing media files
-- Real-time updates and notifications
-- Profile management
-- Commenting and liking posts
+- User authentication and authorization ( done !)
+- Posting and sharing media files  (under development....)
+- Real-time updates and notifications (under development... notifications service coming soon....)
+- Profile management (under development..)
+- Commenting and liking posts (under developent..) 
 
 ## Architecture
 
@@ -29,8 +29,7 @@ The application is designed using microservices, with each service responsible f
 To run this application, you will need:
 
 - Docker and Docker Compose installed on your machine
-- AWS account with access to S3
-- AWS access keys
+- AWS access keys to be activated 
 
 ### Running the Application
 
