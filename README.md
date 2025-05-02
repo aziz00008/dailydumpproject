@@ -29,15 +29,14 @@ The application is designed using microservices, with each service responsible f
 To run this application, you will need:
 
 - Docker and Docker Compose installed on your machine
-- AWS access keys to be activated 
+- AWS access keys to be activated
+- (Warning : You should not expose Api keys .this is just a dummy project)!!!!!!!!!
 
 ### Running the Application
+ (Warning : You should not expose Api keys .this is just a dummy project)!!!!!!!!!
 
-1. **Activate AWS Access Keys:**
-   Since this application uses AWS S3 for media storage, i have to activate the keys for you if you wish to run the app. These keys are required for the application to interact with AWS S3. Please contact me..  I had to expose my secret keys for the app to be working.
-   Please note that this application is for educational purpose only ! it is a bad practice to expose your aws keys !
-3. **Run Docker Compose:**
-   Once i activate the keys , navigate to the root directory of the project and run the following command:
+1. **Run Docker Compose:**
+    navigate to the root directory of the project and run the following command:
    
    docker-compose up -d
 
